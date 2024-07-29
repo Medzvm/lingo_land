@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store - LingoLand</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add any additional styles here */
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo" id="logo">
+                <img src="img/logo.png" alt="LingoLand Logo" class="logo">
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="store.html">Store</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="our_resources.html">Resources</a></li>
+                </ul>
+            </nav>
+            <div class="cart-container">
+                <button class="cart-btn" aria-label="View Cart">
+                    <img src="img/cart.png" alt="Cart Icon">
+                    <span class="cart-count">0</span>
+                </button>
+                <div class="cart-dropdown">
+                    <h2>Your Cart</h2>
+                    <div class="cart-items">
+                        <!-- Cart items will be dynamically inserted here -->
+                    </div>
+                    <a href="cart.html" class="view-cart">View Cart</a>
+                </div>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+        </div>
+    </header>
+    
+    <!-- Modal for Product Details Form -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Product Details</h2>
+            <form id="product-form">
+                <input type="hidden" id="product-id" name="product-id">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="country">State:</label>
+                <select id="country" name="country" required>
+                    <option value="tn-01" selected>Tunis</option>
+                    <option value="tn-02">Ariana</option>
+                    <option value="tn-03">Ben Arous</option>
+                    <option value="tn-04">Manouba</option>
+                    <option value="tn-05">Bizerte</option>
+                    <option value="tn-06">Nabeul</option>
+                    <option value="tn-07">Zaghouan</option>
+                    <option value="tn-08">Beja</option>
+                    <option value="tn-09">Jendouba</option>
+                    <option value="tn-10">Kef</option>
+                    <option value="tn-11">Siliana</option>
+                    <option value="tn-12">Kasserine</option>
+                    <option value="tn-13">Sidi Bouzid</option>
+                    <option value="tn-14">Sousse</option>
+                    <option value="tn-15">Monastir</option>
+                    <option value="tn-16">Mahdia</option>
+                    <option value="tn-17">Gabes</option>
+                    <option value="tn-18">Mednine</option>
+                    <option value="tn-19">Tozeur</option>
+                    <option value="tn-20">Kebili</option>
+                    <option value="tn-21">Gafsa</option>
+                    <option value="tn-22">Tataouine</option>
+                    <option value="tn-23">Sfax</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <main class="main-content">
+        <section class="store-section">
+            <h1>Our Store</h1>
+            <div class="products-container">
+                <!-- Product Card 1 -->
+                <div class="product-card" data-product-id="1">
+                    <img src="img/product1.jpg" alt="Product Image">
+                    <h2>Product Name 1</h2>
+                    <p class="price">$19.99</p>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="product-card" data-product-id="2">
+                    <img src="img/product2.jpg" alt="Product Image">
+                    <h2>Product Name 2</h2>
+                    <p class="price">$29.99</p>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="product-card" data-product-id="3">
+                    <img src="img/product3.jpg" alt="Product Image">
+                    <h2>Product Name 3</h2>
+                    <p class="price">$39.99</p>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="product-card" data-product-id="4">
+                    <img src="img/product4.jpg" alt="Product Image">
+                    <h2>Product Name 4</h2>
+                    <p class="price">$49.99</p>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+                <!-- Product Card 5 -->
+                <div class="product-card" data-product-id="5">
+                    <img src="img/product5.jpg" alt="Product Image">
+                    <h2>Product Name 5</h2>
+                    <p class="price">$59.99</p>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="LingoLand Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-info">
+                <h2>Contact Us</h2>
+                <p>1234 Rte tunis, Sfax, Tunisia</p>
+                <p>Email: <a href="mailto:contact@lingoland.com">contact@lingoland.com</a></p>
+                <p>Phone: <a href="tel:+21612345678">+216 123 456 78</a></p>
+            </div>
+            <div class="footer-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="store.html">Store</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="our_resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-social-media">
+                <h2>Follow Us</h2>
+                <a href="" target="_blank" class="social-icon facebook" aria-label="Facebook"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="" target="_blank" class="social-icon twitter" aria-label="Twitter"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="" target="_blank" class="social-icon instagram" aria-label="Instagram"><img src="img/instagram.png" alt="Instagram"></a>
+                <a href="" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"><img src="img/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LingoLand. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
