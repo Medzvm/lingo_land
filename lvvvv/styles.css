@@ -2125,3 +2125,32 @@ a {
         width: 90%; /* Make modal content width responsive */
     }
 }
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.cart-item-image {
+    width: 40%;
+    height: auto;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.cart-item-quantity {
+    margin-left: 10px;
+}
+
+.quantity-input {
+    width: 50px;
+}

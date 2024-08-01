@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store - LingoLand</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         /* Add any additional styles here */
     </style>
@@ -33,7 +34,7 @@
                     <div class="cart-items">
                         <!-- Cart items will be dynamically inserted here -->
                     </div>
-                    <a href="cart.html" class="view-cart">View Cart</a>
+                    <a onclick="checkout()" class="view-cart">Check Out</a>
                 </div>
             </div>
             <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
@@ -44,43 +45,9 @@
     <div id="product-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>Product Details</h2>
-            <form id="product-form">
-                <input type="hidden" id="product-id" name="product-id">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
-                <label for="country">State:</label>
-                <select id="country" name="country" required>
-                    <option value="tn-01" selected>Tunis</option>
-                    <option value="tn-02">Ariana</option>
-                    <option value="tn-03">Ben Arous</option>
-                    <option value="tn-04">Manouba</option>
-                    <option value="tn-05">Bizerte</option>
-                    <option value="tn-06">Nabeul</option>
-                    <option value="tn-07">Zaghouan</option>
-                    <option value="tn-08">Beja</option>
-                    <option value="tn-09">Jendouba</option>
-                    <option value="tn-10">Kef</option>
-                    <option value="tn-11">Siliana</option>
-                    <option value="tn-12">Kasserine</option>
-                    <option value="tn-13">Sidi Bouzid</option>
-                    <option value="tn-14">Sousse</option>
-                    <option value="tn-15">Monastir</option>
-                    <option value="tn-16">Mahdia</option>
-                    <option value="tn-17">Gabes</option>
-                    <option value="tn-18">Mednine</option>
-                    <option value="tn-19">Tozeur</option>
-                    <option value="tn-20">Kebili</option>
-                    <option value="tn-21">Gafsa</option>
-                    <option value="tn-22">Tataouine</option>
-                    <option value="tn-23">Sfax</option>
-                </select>
-                <button type="submit">Submit</button>
-            </form>
+            <div id="modal-body">
+                <!-- Cart items and form will be dynamically inserted here -->
+            </div>
         </div>
     </div>
     
@@ -127,7 +94,6 @@
         </section>
     </main>
     
-    
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
@@ -162,5 +128,6 @@
     </footer>
 
     <script src="scripts.js"></script>
+    <script src="cart.js"></script>
 </body>
 </html>
