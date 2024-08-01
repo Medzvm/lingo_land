@@ -353,48 +353,52 @@ a {
     align-items: flex-start; /* Default alignment for large screens */
 }
 
+/* Badge styles */
 .badge, .class-info {
     background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
     backdrop-filter: blur(10px); /* Background blur effect */
-    padding: 10px;
+    padding: 8px; /* Reduced padding */
     border-radius: 5px;
-    display: flex;
-    align-items: center;
+    display: flex; /* Align children horizontally */
+    align-items: center; /* Center align items vertically */
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     animation: fadeInUp 1s ease-in-out; /* Fade-in animation with upward movement */
+    font-size: 0.9em; /* Smaller font size */
 }
 
 .badge img, .class-info img {
-    margin-right: 10px;
+    margin-right: 8px; /* Reduced margin */
+    width: 24px; /* Reduced width */
+    height: 24px; /* Reduced height */
 }
 
 .badge:first-child {
-    transform: translateX(-200px); /* Move this badge 200px to the left */
-    margin-top: 140px; /* Adjust this value for individual badge spacing */
+    transform: translateX(-20px); /* Move this badge 200px to the left */
+    margin-top: 200px; /* Adjust this value for individual badge spacing */
 }
 
 .class-info {
-    transform: translateX(-200px); /* Move this badge 200px to the left */
-    margin-top: -80px; /* Adjust this value for individual badge spacing */
-    flex-direction: column;
-    align-items: flex-start;
+    transform: translateX(-20px); /* Move this badge 200px to the left */
+    margin-top: 10px; /* Adjust this value for individual badge spacing */
+    flex-direction: row; /* Align items in a row */
+    align-items: center; /* Center align items vertically */
     text-align: left;
 }
 
 /* Specific styles for positioning */
 .congratulations-badge {
-    transform: translateX(240px); /* Pushes the badge to the right */
+    transform: translateX(250px); /* Pushes the badge to the right */
     transition: transform 0.3s ease-in-out; /* Adds a smooth transition */
-    margin-top: 150px; /* Adjust this value for individual badge spacing */
+    margin-top: 60px; /* Adjust this value for individual badge spacing */
 }
 
 .join-now-btn {
     background-color: #F8A233;
     border: none;
     border-radius: 80px;
-    padding: 10px 20px;
+    padding: 8px 16px; /* Reduced padding */
     color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 12px; /* Smaller font size */
     margin-top: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease; /* Smooth background color change on hover */
@@ -403,6 +407,19 @@ a {
 .join-now-btn:hover {
     background-color: #e6891f; /* Darker shade on hover */
 }
+/* Keyframes for float animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Adjust this value for the desired float distance */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 /* Hide certain badges on tablets and phones */
 @media (max-width: 991px) {
     .badge, .class-info {
@@ -551,6 +568,7 @@ a {
     font-size: 2rem;
     padding: 20px; /* Padding for all sides */
 }
+
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
@@ -572,224 +590,207 @@ a {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-20px);
-    }
-    60% {
-        transform: translateY(-10px);
-    }
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
 }
 /* Our Approach Section Styles */
 .our-approach {
     margin-bottom: 40px;
-    padding: 20px; /* Added padding for better spacing on small screens */
-    text-align: center; /* Center the entire section */
+    padding: 20px;
+    text-align: center;
 }
 
 .our-approach .approach-title {
-    text-align: center; /* Center the title */
+    font-size: 2.5em;
+    margin-bottom: 10px;
 }
 
 .our-approach .approach-title span:first-child {
-    color: #00ACA8; /* Color for "Our" */
+    color: #00ACA8;
 }
 
 .our-approach .approach-title span:last-child {
-    color: #F48C06; /* Color for "Approach" */
+    color: #F48C06;
 }
 
 .our-approach p {
-    text-align: center; /* Center the description text */
+    font-size: 1.2em;
+    margin-bottom: 20px;
 }
 
 .our-approach .approach-cards {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 15px; /* Reduced gap between cards */
+    gap: 20px;
 }
 
 .our-approach .card {
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box shadow */
-    padding: 15px; /* Adjusted padding */
-    margin: 5px; /* Reduced margin */
-    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    width: 280px;
     text-align: center;
-    position: relative; /* Added for positioning the icon */
-    transition: transform 0.3s; /* Smooth transition */
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.our-approach .card:hover {
+    transform: translateY(-10px);
 }
 
 .our-approach .card h3 {
-    color: #2F327D; /* Set h3 color */
+    font-size: 1.5em;
+    color: #2F327D;
+    margin: 40px 0 10px;
+}
+
+.our-approach .card p {
+    font-size: 1em;
+    color: #666;
 }
 
 .our-approach .icon {
-    width: 60px; /* Increased size */
-    height: 60px; /* Increased size */
+    width: 60px;
+    height: 60px;
     background-size: contain;
     background-repeat: no-repeat;
-    border-radius: 50%; /* Makes the icon rounded */
-    background-color: #f0f0f0; /* Background color for the icon */
+    border-radius: 50%;
+    background-color: #f0f0f0;
     position: absolute;
-    top: -30px; /* Adjusted position to accommodate larger icon */
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 10px; /* Increased padding */
-    display: flex; /* Added to center content */
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .our-approach .icon img {
-    max-width: 100%; /* Ensure the image does not exceed the container's width */
-    max-height: 100%; /* Ensure the image does not exceed the container's height */
-    object-fit: contain; /* Scale the image to fit within the container while preserving its aspect ratio */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
-.our-approach .icon.alignment {
-    background-image: url('img/alignment-icon.png'); /* Adjust the path as necessary */
-}
-
-.our-approach .icon.pedagogy {
-    background-image: url('img/pedagogy-icon.png'); /* Adjust the path as necessary */
-}
-
-.our-approach .icon.ai {
-    background-image: url('img/ai-icon.png'); /* Adjust the path as necessary */
-}
-
-.card:hover {
-    transform: rotate(3deg) scale(1.05); /* Rotate and scale up */
-}
-
-/* TV Styles (Very Large Screens) */
+/* Media Queries for Responsive Design */
 @media (min-width: 1200px) {
     .our-approach h2 {
-        font-size: 48px;
+        font-size: 3em;
     }
 
     .our-approach p {
-        font-size: 20px;
+        font-size: 1.4em;
     }
 
     .our-approach .card {
-        width: 350px; /* Larger card width for TVs */
+        width: 350px;
     }
 
     .our-approach .icon {
-        width: 80px; /* Larger icon size */
-        height: 80px; /* Larger icon size */
+        width: 80px;
+        height: 80px;
     }
 
     .our-approach .card h3 {
-        font-size: 28px;
+        font-size: 1.8em;
     }
 }
 
-/* Desktop Styles (Large Screens) */
 @media (min-width: 992px) and (max-width: 1199px) {
     .our-approach h2 {
-        font-size: 42px;
+        font-size: 2.5em;
     }
 
     .our-approach p {
-        font-size: 20px;
+        font-size: 1.3em;
     }
 
     .our-approach .card {
-        width: 320px; /* Adjusted card width for desktops */
+        width: 320px;
     }
 
     .our-approach .icon {
-        width: 70px; /* Adjusted icon size */
-        height: 70px; /* Adjusted icon size */
+        width: 70px;
+        height: 70px;
     }
 
     .our-approach .card h3 {
-        font-size: 26px;
+        font-size: 1.6em;
     }
 }
 
-/* Tablet Styles (Medium Screens) */
 @media (min-width: 768px) and (max-width: 991px) {
     .our-approach h2 {
-        font-size: 36px;
+        font-size: 2.2em;
     }
 
     .our-approach p {
-        font-size: 18px;
+        font-size: 1.2em;
     }
 
     .our-approach .card {
-        width: 280px; /* Adjusted card width for tablets */
+        width: 300px;
     }
 
     .our-approach .icon {
-        width: 60px; /* Adjusted icon size */
-        height: 60px; /* Adjusted icon size */
+        width: 60px;
+        height: 60px;
     }
 
     .our-approach .card h3 {
-        font-size: 24px;
+        font-size: 1.4em;
     }
 }
 
-/* Phone Styles (Small Screens) */
 @media (max-width: 767px) {
-    .our-approach {
-        padding: 20px;
-    }
-
     .our-approach h2 {
-        font-size: 30px;
+        font-size: 2em;
     }
 
     .our-approach p {
-        font-size: 16px;
+        font-size: 1em;
     }
 
     .our-approach .card {
-        width: 100%; /* Full width for smaller screens */
-        margin: 5px 0; /* Reduced margin for better spacing */
+        width: 100%;
+        margin: 10px 0;
     }
 
     .our-approach .icon {
-        width: 50px; /* Smaller icon size */
-        height: 50px; /* Smaller icon size */
+        width: 50px;
+        height: 50px;
     }
 
     .our-approach .card h3 {
-        font-size: 20px;
+        font-size: 1.2em;
     }
 }
+/* General Styles */
 /* General Styles */
 .what-is-lingo-land {
     padding: 40px;
     background-color: #f9f9f9;
     text-align: center;
-    animation: fadeIn 1s ease-in-out; /* Add fade-in animation */
+    /* Add a fade-in animation */
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.what-is-lingo-land h2, 
+.what-is-lingo-land p, 
+.image-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
-.what-is-lingo-land h2 {
-    font-size: 2.25rem; /* Use relative units for responsiveness */
-    margin-bottom: 20px;
-    animation: slideInLeft 1s ease-in-out; /* Add slide-in animation */
+.what-is-lingo-land h2.animate,
+.what-is-lingo-land p.animate,
+.image-container.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @keyframes slideInLeft {
@@ -803,15 +804,6 @@ a {
     }
 }
 
-.what-is-lingo-land p {
-    font-size: 1.125rem; /* Use relative units for responsiveness */
-    margin-bottom: 40px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    animation: slideInRight 1.2s ease-in-out; /* Add slide-in animation */
-}
-
 @keyframes slideInRight {
     0% {
         opacity: 0;
@@ -820,6 +812,17 @@ a {
     100% {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -1023,12 +1026,27 @@ a {
     }
 }
 /* General Styles for Our Mission Section */
+
 .our-mission {
-    margin-top: 60px; /* Increased margin from previous section */
-    border-radius: 25px; /* Updated border radius */
+    margin-top: 60px;
+    border-radius: 25px;
     padding: 20px;
-    text-align: center; /* Center text within the section */
-    animation: fadeIn 1s ease-in-out; /* Add fade-in animation */
+    text-align: center;
+}
+
+.our-mission h2, 
+.our-mission p, 
+.our-mission .mission-cards .card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.our-mission h2.animate,
+.our-mission p.animate,
+.our-mission .mission-cards .card.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @keyframes fadeIn {
@@ -1085,6 +1103,12 @@ a {
     position: relative;
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     animation: zoomIn 1s ease-in-out; /* Add zoom-in animation */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effects */
+}
+
+.our-mission .card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance the shadow effect */
 }
 
 @keyframes zoomIn {
@@ -1280,12 +1304,16 @@ a {
 
 /* Responsive Design for Phones */
 @media (max-width: 767px) {
+    .our-mission {
+        padding: 20px;
+    }
+
     .our-mission h2 {
-        font-size: 30px; /* Adjust font size for phones */
+        font-size: 32px; /* Smaller font size for phones */
     }
 
     .our-mission p {
-        font-size: 16px; /* Adjust font size for phones */
+        font-size: 16px; /* Smaller font size for phones */
     }
 
     .our-mission .mission-cards {
@@ -1297,21 +1325,25 @@ a {
     .our-mission .card {
         width: 90%; /* Adjust width for phones */
         height: auto; /* Adjust height for phones */
-        padding: 15px; /* Reduce padding for phones */
     }
 
     .our-mission .card h3 {
-        font-size: 20px; /* Adjust font size for headings */
+        font-size: 20px; /* Smaller font size for headings */
     }
 
     .our-mission .card p {
-        font-size: 14px; /* Adjust font size for paragraphs */
+        font-size: 14px; /* Smaller font size for paragraphs */
     }
 
     .our-mission .icon-container {
-        width: 70px; /* Icon size for phones */
-        height: 70px; /* Icon size for phones */
+        width: 70px; /* Smaller icon size */
+        height: 70px; /* Smaller icon size */
         margin-bottom: 20px; /* Space between icon and text for phones */
+    }
+
+    .our-mission .btn {
+        width: 90%; /* Adjust button width for phones */
+        height: 60px; /* Adjust button height for phones */
     }
 }
 /* General styles for the section */
@@ -1389,7 +1421,12 @@ a {
     color: #F5A93B; /* Color for the second part of the title */
 }
 
-.why-choose-us .text-container p {
+/* New container for paragraph */
+.why-choose-us .text-container .text-content {
+    margin-top: 30px; /* Move the paragraph down */
+}
+
+.why-choose-us .text-container .text-content p {
     font-size: 18px; /* Font size for the paragraph */
     color: #696984; /* Text color */
     line-height: 1.6; /* Line height for better readability */
@@ -1445,10 +1482,11 @@ a {
         margin-bottom: 10px; /* Adjust margin for better spacing */
     }
 
-    .why-choose-us .text-container p {
+    .why-choose-us .text-container .text-content p {
         font-size: 16px; /* Adjust font size for better readability on mobile */
     }
 }
+
 /* Transform Your English Section */
 .transform-your-english {
     background-color: #f8f9fa; /* Background color for contrast */
