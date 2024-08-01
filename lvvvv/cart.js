@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <p class="price">${item.price}</p>
                             </div>
                             <div class="cart-item-quantity">
-                                <input type="number" id="count" class="quantity-input" value="1" min="1">
+                                <input type="number" class="quantity-input" value="1" min="1">
                             </div>
                         </div>
                     `).join('')}
@@ -190,18 +190,26 @@ document.addEventListener('DOMContentLoaded', function () {
             preConfirm: () => {
                 const name = Swal.getPopup().querySelector('#name').value;
                 const email = Swal.getPopup().querySelector('#email').value;
-                const address = Swal.getPopup().querySelector('#address')?.value || ''; // Adjust if you need to handle address
                 const phone = Swal.getPopup().querySelector('#phone').value;
-                const productCount = Swal.getPopup().querySelector('#count').value;
+                const country = Swal.getPopup().querySelector('#country').value;
 
-                // Calculate the total count of items in the cart
-                const count = Array.from(Swal.getPopup().querySelectorAll('.quantity-input')).reduce((total, input) => total + parseInt(input.value, 10), 0);
+                // Collect product data
+                const products = cart.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: parseInt(Swal.getPopup().querySelector(`.cart-item[data-product-id="${item.id}"] .quantity-input`).value, 10)
+                }));
 
-                if (!name || !email || !address || !phone) {
+                if (!name || !email || !phone || !country) {
                     Swal.showValidationMessage(`Please fill in all fields`);
                 }
 
-                return { name, email, address, phone, productCount };
+                return { name, email, phone, country, products };
+            },
+            willClose: () => {
+                const { name, email, phone, country, products } = Swal.getPopup().querySelector('form').elements;
+                sendProductToGoogleSheets(name.value, email.value, phone.value, country.value, products); // Call sendProductToGoogleSheets with collected data
             }
         });
     }
@@ -209,3 +217,58 @@ document.addEventListener('DOMContentLoaded', function () {
     // Expose checkout function globally
     window.checkout = checkout;
 });
+
+function sendProductToGoogleSheets(name, email, phone, country, products) {
+    Swal.fire({
+        title: "Sending...",
+        titleColor: "#fc1111",
+        text: "Please wait while your purchase is being processed.",
+        icon: "info",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+            Swal.showLoading();
+        },
+    });
+
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbxDeJhUsSRRg4D2zbGCsOOvOv91emweymXuVgBP3f9VJhXcQ5qgAKOkYeLe8-aZ3-EdYg/exec";
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("country", country);
+
+    // Process each product
+    products.forEach((product, index) => {
+        formData.append(`productName${index}`, product.name);
+        formData.append(`productPrice${index}`, product.price);
+        formData.append(`productQuantity${index}`, product.quantity);
+    });
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", scriptUrl);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            navigator.vibrate([200, 100, 200]); // Vibrate for feedback
+            console.log("Product sent successfully:");
+            Swal.fire({
+                title: "Demand Reached",
+                text: "Your purchase was successful. We'll contact you soon.",
+                imageUrl: "/img/sc.png",
+                imageAlt: "Custom Success Icon",
+                showConfirmButton: false,
+                timer: 2000,
+                icon: null,
+                background: "black",
+                color: "white",
+            });
+        } else {
+            console.error("Error sending product");
+        }
+    };
+    xhr.onerror = function () {
+        console.error("Error sending product");
+    };
+    xhr.send(formData);
+}
