@@ -208,9 +208,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 return { name, email, phone, country, products };
             },
             willClose: () => {
-                const { name, email, phone, country, products } = Swal.getPopup().querySelector('form').elements;
-                sendProductToGoogleSheets(name.value, email.value, phone.value, country.value, products); // Call sendProductToGoogleSheets with collected data
+                const form = Swal.getPopup().querySelector('form');
+                const name = form.querySelector('#name').value;
+                const email = form.querySelector('#email').value;
+                const phone = form.querySelector('#phone').value;
+                const country = form.querySelector('#country').value;
+            
+                const products = cart.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: parseInt(form.querySelector(`.cart-item[data-product-id="${item.id}"] .quantity-input`).value, 10)
+                }));
+            
+                sendProductToGoogleSheets(name, email, phone, country, products);
             }
+            
         });
     }
 
@@ -231,7 +244,7 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
         },
     });
 
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbxDeJhUsSRRg4D2zbGCsOOvOv91emweymXuVgBP3f9VJhXcQ5qgAKOkYeLe8-aZ3-EdYg/exec";
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbxa4U3QZNsbuWMQu8wT5vwLFWHZGiXpOonjN6tlGMPM3YO7IRO6X4tjXdv_Om_P2TgwuA/exec";
 
     const formData = new FormData();
     formData.append("name", name);
