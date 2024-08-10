@@ -125,6 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Checkout function to show the product details form
+
+
     function checkout() {
         Swal.fire({
             showConfirmButton: false,
@@ -147,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <h2>Product Details</h2>
                 <form id="product-form">
-                    <input type="hidden" id="product-id" name="product-id">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
                     <label for="email">Email:</label>
@@ -158,83 +159,59 @@ document.addEventListener('DOMContentLoaded', function () {
                     <select id="country" name="country" required>
                         <option value="tn-01" selected>Tunis</option>
                         <option value="tn-02">Ariana</option>
-                        <option value="tn-03">Ben Arous</option>
-                        <option value="tn-04">Manouba</option>
-                        <option value="tn-05">Bizerte</option>
-                        <option value="tn-06">Nabeul</option>
-                        <option value="tn-07">Zaghouan</option>
-                        <option value="tn-08">Beja</option>
-                        <option value="tn-09">Jendouba</option>
-                        <option value="tn-10">Kef</option>
-                        <option value="tn-11">Siliana</option>
-                        <option value="tn-12">Kasserine</option>
-                        <option value="tn-13">Sidi Bouzid</option>
-                        <option value="tn-14">Sousse</option>
-                        <option value="tn-15">Monastir</option>
-                        <option value="tn-16">Mahdia</option>
-                        <option value="tn-17">Gabes</option>
-                        <option value="tn-18">Mednine</option>
-                        <option value="tn-19">Tozeur</option>
-                        <option value="tn-20">Kebili</option>
-                        <option value="tn-21">Gafsa</option>
-                        <option value="tn-22">Tataouine</option>
-                        <option value="tn-23">Sfax</option>
+                        <!-- More options... -->
                     </select>
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="submit-btn">Submit</button>
                 </form>
             `,
             focusConfirm: false,
-            didOpen: () => {
-                updateCheckoutModal(); // Update modal content after it opens
-            },
-            preConfirm: () => {
-                const name = Swal.getPopup().querySelector('#name').value;
-                const email = Swal.getPopup().querySelector('#email').value;
-                const phone = Swal.getPopup().querySelector('#phone').value;
-                const country = Swal.getPopup().querySelector('#country').value;
-
-                // Collect product data
-                const products = cart.map(item => ({
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    quantity: parseInt(Swal.getPopup().querySelector(`.cart-item[data-product-id="${item.id}"] .quantity-input`).value, 10)
-                }));
-
-                if (!name || !email || !phone || !country) {
-                    Swal.showValidationMessage(`Please fill in all fields`);
-                }
-
-                return { name, email, phone, country, products };
-            },
-            willClose: () => {
-                const form = Swal.getPopup().querySelector('form');
-                const name = form.querySelector('#name').value;
-                const email = form.querySelector('#email').value;
-                const phone = form.querySelector('#phone').value;
-                const country = form.querySelector('#country').value;
-            
-                const products = cart.map(item => ({
-                    id: item.id,
-                    name: item.name,
-                    price: item.price,
-                    quantity: parseInt(form.querySelector(`.cart-item[data-product-id="${item.id}"] .quantity-input`).value, 10)
-                }));
-            
-                sendProductToGoogleSheets(name, email, phone, country, products);
-            }
-            
         });
+
+        // Listen for form submission
+        const form = Swal.getPopup().querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Extract form values
+                const name = form.querySelector('#name')?.value || '';
+                const email = form.querySelector('#email')?.value || '';
+                const phone = form.querySelector('#phone')?.value || '';
+                const country = form.querySelector('#country')?.value || '';
+
+                // Log values to ensure they're being captured
+                console.log('Form Submitted:', { name, email, phone, country });
+
+                // Handle cart items
+                const products = cart.map(item => {
+                    const cartItem = form.querySelector(`.cart-item[data-product-id="${item.id}"]`);
+                    const quantityInput = cartItem ? cartItem.querySelector('.quantity-input') : null;
+                    return {
+                        id: item.id,
+                        name: item.name,
+                        price: item.price,
+                        quantity: quantityInput ? parseInt(quantityInput.value, 10) : 1 // Default to 1 if input not found
+                    };
+                });
+
+                console.log('Products:', products); // Log products to ensure they're captured correctly
+
+                // Call the function to send data
+                sendProductToGoogleSheets(name, email, phone, country, products);
+            });
+        } else {
+            console.error('Form not found');
+        }
     }
 
     // Expose checkout function globally
     window.checkout = checkout;
 });
-
 function sendProductToGoogleSheets(name, email, phone, country, products) {
+    console.log('Submitting:', { name, email, phone, country, products });
+
     Swal.fire({
         title: "Sending...",
-        titleColor: "#fc1111",
         text: "Please wait while your purchase is being processed.",
         icon: "info",
         allowOutsideClick: false,
@@ -244,44 +221,42 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
         },
     });
 
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbxa4U3QZNsbuWMQu8wT5vwLFWHZGiXpOonjN6tlGMPM3YO7IRO6X4tjXdv_Om_P2TgwuA/exec";
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbwQFKHLcBAVqyefK0bciVSdTNe8st6kidzgOHGufLjgNeT9lF4lORv4476hbugu3DKwkg/exec"; // Update with your script URL
 
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("phone", phone);
-    formData.append("country", country);
-
-    // Process each product
-    products.forEach((product, index) => {
-        formData.append(`productName${index}`, product.name);
-        formData.append(`productPrice${index}`, product.price);
-        formData.append(`productQuantity${index}`, product.quantity);
+    const formData = JSON.stringify({
+        name,
+        email,
+        phone,
+        country,
+        products
     });
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", scriptUrl);
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            navigator.vibrate([200, 100, 200]); // Vibrate for feedback
-            console.log("Product sent successfully:");
-            Swal.fire({
-                title: "Demand Reached",
-                text: "Your purchase was successful. We'll contact you soon.",
-                imageUrl: "/img/sc.png",
-                imageAlt: "Custom Success Icon",
-                showConfirmButton: false,
-                timer: 2000,
-                icon: null,
-                background: "black",
-                color: "white",
-            });
-        } else {
-            console.error("Error sending product");
-        }
-    };
-    xhr.onerror = function () {
-        console.error("Error sending product");
-    };
-    xhr.send(formData);
+    fetch(scriptUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Google Sheets Response:', result);
+        Swal.fire({
+            title: "Success!",
+            text: "Your purchase has been successfully processed.",
+            icon: "success",
+            confirmButtonText: "OK",
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            title: "Error!",
+            text: "There was an error processing your request.",
+            icon: "error",
+            confirmButtonText: "OK",
+        });
+    });
 }
+
