@@ -26,7 +26,7 @@
         <section class="resources-section">
             <h1>Our Resources</h1>
             <div class="form-container">
-                <form action="submit-form.php" method="post">
+                <form id="contact-form">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
                     
@@ -38,6 +38,7 @@
                     
                     <button type="submit">Submit</button>
                 </form>
+                
             </div>
             <div class="coming-soon">
                 <h2>Coming Soon</h2>
@@ -84,6 +85,57 @@
         document.querySelector('.menu-toggle').addEventListener('click', () => {
             document.querySelector('.nav').classList.toggle('show');
         });
+    </script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData(this);
+    const formObject = Object.fromEntries(formData.entries());
+
+    Swal.fire({
+        title: 'Submitting your message...',
+        text: 'Please wait a moment.',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+    fetch('https://script.google.com/macros/s/AKfycbwOMo6H67Wf-V5tzrfJ3TK-LHmD0AENEYmPk-iwd7cW5WzuMXZUjMxrVrqLmUq9FosA/exec', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formObject)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.result === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Your message has been sent successfully.',
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Failed to send your message. Please try again.',
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: 'An error occurred while submitting the form. Please try again.',
+        });
+    });
+});
+
     </script>
 </body>
 </html>
