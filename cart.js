@@ -207,9 +207,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Expose checkout function globally
     window.checkout = checkout;
 });
+
 function sendProductToGoogleSheets(name, email, phone, country, products) {
     console.log('Submitting:', { name, email, phone, country, products });
-
     Swal.fire({
         title: "Sending...",
         text: "Please wait while your purchase is being processed.",
@@ -221,42 +221,42 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
         },
     });
 
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbwQFKHLcBAVqyefK0bciVSdTNe8st6kidzgOHGufLjgNeT9lF4lORv4476hbugu3DKwkg/exec"; // Update with your script URL
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbwQFKHLcBAVqyefK0bciVSdTNe8st6kidzgOHGufLjgNeT9lF4lORv4476hbugu3DKwkg/exec"; // Your script URL
+    const xhr = new XMLHttpRequest();
+    
+    xhr.open("POST", scriptUrl, true);
+    xhr.setRequestHeader("Accept", "application/json");
 
-    const formData = JSON.stringify({
-        name,
-        email,
-        phone,
-        country,
-        products
-    });
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            Swal.close(); // Close the loading dialog
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                console.log('Google Sheets Response:', response);
+                Swal.fire({
+                    title: "Success!",
+                    text: "Your purchase has been successfully processed.",
+                    icon: "success",
+                    confirmButtonText: "OK",
+                });
+            } else {
+                console.error('Error:', xhr.status, xhr.statusText);
+                Swal.fire({
+                    title: "Error!",
+                    text: "There was an error processing your request.",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                });
+            }
+        }
+    };
 
-    fetch(scriptUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        },
-        body: formData,
-    })
-    .then(response => response.json())
-    .then(result => {
-        console.log('Google Sheets Response:', result);
-        Swal.fire({
-            title: "Success!",
-            text: "Your purchase has been successfully processed.",
-            icon: "success",
-            confirmButtonText: "OK",
-        });
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        Swal.fire({
-            title: "Error!",
-            text: "There was an error processing your request.",
-            icon: "error",
-            confirmButtonText: "OK",
-        });
-    });
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('phone', phone);
+    formData.append('country', country);
+    formData.append('products', JSON.stringify(products));
+
+    xhr.send(formData);
 }
-
