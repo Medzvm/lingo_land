@@ -145,7 +145,7 @@ function removeCartItem(productId) {
                                 <p class="price">${item.price}</p>
                             </div>
                             <div class="cart-item-quantity">
-                                <input type="number" class="quantity-input" value="1" min="1">
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" max="9">
                             </div>
                         </div>
                     `).join('')}
@@ -169,36 +169,49 @@ function removeCartItem(productId) {
             `,
             focusConfirm: false,
         });
-
+    
+        // Attach event listeners to quantity inputs within the checkout modal
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('change', function () {
+                const cartItemElement = this.closest('.cart-item');
+                const productId = cartItemElement.getAttribute('data-product-id');
+                const newQuantity = parseInt(this.value, 10);
+    
+                // Update the cart with the new quantity
+                const cartItem = cart.find(item => item.id === productId);
+                if (cartItem) {
+                    cartItem.quantity = newQuantity;
+                }
+    
+                // Update the cart display (if you want to reflect changes immediately)
+                updateCart();
+            });
+        });
+    
         // Listen for form submission
         const form = Swal.getPopup().querySelector('form');
         if (form) {
             form.addEventListener('submit', function (event) {
                 event.preventDefault(); // Prevent default form submission
-
+    
                 // Extract form values
                 const name = form.querySelector('#name')?.value || '';
                 const email = form.querySelector('#email')?.value || '';
                 const phone = form.querySelector('#phone')?.value || '';
                 const country = form.querySelector('#country')?.value || '';
-
-                // Log values to ensure they're being captured
-                console.log('Form Submitted:', { name, email, phone, country });
-
+    
                 // Handle cart items
                 const products = cart.map(item => {
-                    const cartItem = form.querySelector(`.cart-item[data-product-id="${item.id}"]`);
-                    const quantityInput = cartItem ? cartItem.querySelector('.quantity-input') : null;
                     return {
                         id: item.id,
                         name: item.name,
                         price: item.price,
-                        quantity: quantityInput ? parseInt(quantityInput.value, 10) : 1 // Default to 1 if input not found
+                        quantity: item.quantity // Use updated quantity from cart
                     };
                 });
-
+    
                 console.log('Products:', products); // Log products to ensure they're captured correctly
-
+    
                 // Call the function to send data
                 sendProductToGoogleSheets(name, email, phone, country, products);
             });
@@ -206,6 +219,7 @@ function removeCartItem(productId) {
             console.error('Form not found');
         }
     }
+    
 
     // Expose checkout function globally
     window.checkout = checkout;
