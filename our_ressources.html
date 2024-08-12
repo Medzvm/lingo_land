@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Resources</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -87,57 +88,75 @@
         });
     </script>
     <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby0xX5OGDAGMkSCdwfrw_ucecGAvrGizeJZYaEpvN3VAhLeit7ldTQha2lsdegepkiH/exec';
 
-    const formData = new FormData(this);
-    const formObject = Object.fromEntries(formData.entries());
+        $(document).ready(function () {
+            $('.app-form').on('submit', function (e) {
+                e.preventDefault();
 
-    Swal.fire({
-        title: 'Submitting your message...',
-        text: 'Please wait a moment.',
-        allowOutsideClick: false,
-        didOpen: () => {
-            Swal.showLoading();
-        }
-    });
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Please wait...',
+                    text: 'Sending your message',
+                    willOpen: () => {
+                        Swal.showLoading();
+                    },
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    background: "hsla(231, 10%, 14%, 1)"
+                });
 
-    fetch('https://script.google.com/macros/s/AKfycbwOMo6H67Wf-V5tzrfJ3TK-LHmD0AENEYmPk-iwd7cW5WzuMXZUjMxrVrqLmUq9FosA/exec', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formObject)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.result === 'success') {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: 'Your message has been sent successfully.',
+                const formData = new FormData(this);
+
+                $.ajax({
+                    url: scriptURL,
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        console.log("Response from Google Sheets:", data);
+
+                        if (data.result === 'success') {
+                            Swal.fire({
+                                imageUrl: "assets/images/logo.png",
+                                imageAlt: "Custom Success Icon",
+                                title: 'Success!',
+                                text: 'Your message is sent. Thank you for reaching out.',
+                                width: 600,
+                                padding: "3em",
+                                timer: 5000,
+                                timerProgressBar: true,
+                                showConfirmButton: false,
+                                allowOutsideClick: false,
+                                color: "#000",
+                                background: "#60c0e0",
+                                backdrop: "rgba(0,0,0,0.4)",
+                            }).then(() => {
+                                window.location.reload();
+                            });
+                        } else {
+                            console.error('Error:', data.error);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong! Please try again later.',
+                            });
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Error!', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'An unexpected error occurred. Please try again later.',
+                        });
+                    }
+                });
             });
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: 'Failed to send your message. Please try again.',
-            });
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'An error occurred while submitting the form. Please try again.',
         });
-    });
-});
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 </body>
 </html>
