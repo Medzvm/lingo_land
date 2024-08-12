@@ -259,7 +259,7 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
         },
     });
 
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbxtXUeLDKXPUsIzP9Nys9QyLLekuI6G5GtEfLH-_y80qbVPRKl7R6K5zIBQcM_K5xNCiA/exec"; // Your script URL
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbwpcDOB3w3DSpUkpepbpYxtiz0xkVRfTwICaZwR99Gp2XDsyK6vlh2c1oniShJs8HTtsg/exec"; // Your script URL
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", scriptUrl, true);
@@ -276,6 +276,8 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
                     text: "Your purchase has been successfully processed.",
                     icon: "success",
                     confirmButtonText: "OK",
+                }).then(() => {
+                    window.location.reload();
                 });
             } else {
                 console.error('Error:', xhr.status, xhr.statusText);
