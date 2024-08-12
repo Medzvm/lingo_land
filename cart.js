@@ -207,9 +207,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Expose checkout function globally
     window.checkout = checkout;
 });
-
 function sendProductToGoogleSheets(name, email, phone, country, products) {
     console.log('Submitting:', { name, email, phone, country, products });
+
     Swal.fire({
         title: "Sending...",
         text: "Please wait while your purchase is being processed.",
@@ -221,7 +221,7 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
         },
     });
 
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbycUkrH503piPFI_RIyKIlK2UxoP31QLzUJeQdLhMdC9L1gRyCLCd2FMbeGs71e_eVdPQ/exec"; // Your script URL
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbzDpk0UaGoPlD29ZpYTFMT14NkzyzVKlivv-xauppVfWNPrUmpg5MRIK21zmHZqHdptUw/exec"; // Your script URL
     const xhr = new XMLHttpRequest();
     
     xhr.open("POST", scriptUrl, true);
@@ -251,12 +251,13 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
         }
     };
 
+    // Prepare the data as FormData
     const formData = new FormData();
     formData.append('name', name);
     formData.append('email', email);
     formData.append('phone', phone);
     formData.append('country', country);
-    formData.append('products', JSON.stringify(products));
+    formData.append('products', JSON.stringify(products)); // Convert products to JSON string
 
     xhr.send(formData);
 }
