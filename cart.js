@@ -223,7 +223,7 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
 
     const scriptUrl = "https://script.google.com/macros/s/AKfycbyfJ6a6CNnqdTveJxdpC_xR_3nWSbi4tL7k7SlENhrEBkUTPS1-QB_ZRoUGgmect0jKTw/exec"; // Your script URL
     const xhr = new XMLHttpRequest();
-    
+
     xhr.open("POST", scriptUrl, true);
     xhr.setRequestHeader("Accept", "application/json");
 
