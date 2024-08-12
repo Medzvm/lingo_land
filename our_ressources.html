@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Resources</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <a href="index.html" class="logo"><img src="img/loogo.png" alt="LingoLand Logo"></a>
+            <a href="index.html" class="logo"><img src="img/logo.png" alt="LingoLand Logo"></a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
@@ -27,7 +26,7 @@
         <section class="resources-section">
             <h1>Our Resources</h1>
             <div class="form-container">
-                <form id="contact-form">
+                <form id="contact-form" class="app-form">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
                     
@@ -47,7 +46,6 @@
             </div>
         </section>
     </main>
-
 
     <footer class="footer">
         <div class="footer-content">
@@ -71,10 +69,10 @@
             </div>
             <div class="footer-social-media">
                 <h2>Follow Us</h2>
-                <a href="" target="_blank" class="social-icon facebook" aria-label="Facebook"><img src="img/facebook.png" alt="" srcset=""></a>
-                <a href="" target="_blank" class="social-icon twitter" aria-label="Twitter"><img src="img/youtube.png" alt=""></a>
-                <a href="" target="_blank" class="social-icon instagram" aria-label="Instagram"><img src="img/innstagram.png" alt="" srcset=""></a>
-                <a href="" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"><img src="img/linkedin.png" alt="" srcset=""></a>
+                <a href="" target="_blank" class="social-icon facebook" aria-label="Facebook"><img src="img/facebook.png" alt=""></a>
+                <a href="" target="_blank" class="social-icon twitter" aria-label="Twitter"><img src="img/twitter.png" alt=""></a>
+                <a href="" target="_blank" class="social-icon instagram" aria-label="Instagram"><img src="img/instagram.png" alt=""></a>
+                <a href="" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"><img src="img/linkedin.png" alt=""></a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -82,82 +80,80 @@
         </div>
     </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.querySelector('.menu-toggle').addEventListener('click', () => {
             document.querySelector('.nav').classList.toggle('show');
         });
-    </script>
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbz_15lzW_YOVH5oX7807PQ9_kKFGyV-rbjCKDVEEGZoNzi77DI1xO7rVjCe8spJ15ZE/exec';
 
-$(document).ready(function () {
-    $('.app-form').on('submit', function (e) {
-        e.preventDefault();
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwyxyC8kFxMUdNXSiHuAexTrhZszUdmeNi6nu2rGMtjUNGBR3cmGBy550hXnvY386oM/exec';
 
-        Swal.fire({
-            icon: 'info',
-            title: 'Please wait...',
-            text: 'Sending your message',
-            willOpen: () => {
-                Swal.showLoading();
-            },
-            showConfirmButton: false,
-            allowOutsideClick: false,
-            background: "hsla(231, 10%, 14%, 1)"
-        });
+        $(document).ready(function () {
+            $('#contact-form').on('submit', function (e) {
+                e.preventDefault();
 
-        const formData = new FormData(this);
-
-        $.ajax({
-            url: scriptURL,
-            method: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                console.log("Response from Google Sheets:", data);
-
-                if (data.result === 'success') {
-                    Swal.fire({
-                        imageUrl: "assets/images/logo.png",
-                        imageAlt: "Custom Success Icon",
-                        title: 'Success!',
-                        text: 'Your message is sent. Thank you for reaching out.',
-                        width: 600,
-                        padding: "3em",
-                        timer: 5000,
-                        timerProgressBar: true,
-                        showConfirmButton: false,
-                        allowOutsideClick: false,
-                        color: "#000",
-                        background: "#60c0e0",
-                        backdrop: "rgba(0,0,0,0.4)",
-                    }).then(() => {
-                        window.location.reload();
-                    });
-                } else {
-                    console.error('Error:', data.error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong! Please try again later.',
-                    });
-                }
-            },
-            error: function (error) {
-                console.error('Error!', error);
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'An unexpected error occurred. Please try again later.',
+                    icon: 'info',
+                    title: 'Please wait...',
+                    text: 'Sending your message',
+                    willOpen: () => {
+                        Swal.showLoading();
+                    },
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    background: "hsla(231, 10%, 14%, 1)"
                 });
-            }
+
+                const formData = new FormData(this);
+
+                $.ajax({
+                    url: scriptURL,
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        console.log("Response from Google Sheets:", data);
+
+                        if (data.result === 'success') {
+                            Swal.fire({
+                                imageUrl: "assets/images/logo.png",
+                                imageAlt: "Custom Success Icon",
+                                title: 'Success!',
+                                text: 'Your message is sent. Thank you for reaching out.',
+                                width: 600,
+                                padding: "3em",
+                                timer: 5000,
+                                timerProgressBar: true,
+                                showConfirmButton: false,
+                                allowOutsideClick: false,
+                                color: "#000",
+                                background: "#60c0e0",
+                                backdrop: "rgba(0,0,0,0.4)",
+                            }).then(() => {
+                                window.location.reload();
+                            });
+                        } else {
+                            console.error('Error:', data.error);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong! Please try again later.',
+                            });
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Error!', error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'An unexpected error occurred. Please try again later.',
+                        });
+                    }
+                });
+            });
         });
-    });
-});
-
-
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
