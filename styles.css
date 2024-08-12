@@ -775,55 +775,13 @@ a {
     padding: 40px;
     background-color: #f9f9f9;
     text-align: center;
-    /* Add a fade-in animation */
 }
 
 .what-is-lingo-land h2, 
 .what-is-lingo-land p, 
 .image-container {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-
-.what-is-lingo-land h2.animate,
-.what-is-lingo-land p.animate,
-.image-container.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-@keyframes slideInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes zoomIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+    opacity: 1; /* Ensure everything is visible */
+    transform: translateY(0); /* Removed any transform */
 }
 
 .what-is-lingo-land .highlight {
@@ -849,18 +807,6 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: zoomIn 1.5s ease-in-out; /* Add zoom-in animation */
-}
-
-@keyframes zoomIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
 }
 
 .image-container img {
@@ -868,7 +814,7 @@ a {
     height: auto;
     border-radius: 10px;
     object-fit: cover; /* Ensure the image covers the container */
-    transition: transform 0.3s ease; /* Add transition for hover effect */
+    transition: transform 0.3s ease; /* Transition for hover effect */
 }
 
 .image-container img:hover {
@@ -886,7 +832,6 @@ a {
     padding: 10px 20px;
     border-radius: 10px;
     text-align: center;
-    animation: fadeIn 1.5s ease-in-out; /* Add fade-in animation */
 }
 
 /* General Styles for Buttons */
@@ -926,6 +871,7 @@ a {
 .for-students .btn {
     background-color: #00ACA8;
 }
+
 /* TV Styles (Very Large Screens) */
 @media (min-width: 1200px) {
     .what-is-lingo-land h2 {
@@ -1037,50 +983,18 @@ a {
 .our-mission h2, 
 .our-mission p, 
 .our-mission .mission-cards .card {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-
-.our-mission h2.animate,
-.our-mission p.animate,
-.our-mission .mission-cards .card.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    opacity: 1; /* Make everything fully visible */
+    transform: translateY(0); /* No transform */
 }
 
 .our-mission h2 {
     font-size: 36px; /* Default font size */
     margin-bottom: 20px; /* Margin to create space below the heading */
-    animation: slideIn 1.5s ease-in-out; /* Add slide-in animation */
-}
-
-@keyframes slideIn {
-    0% {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
 }
 
 .our-mission p {
     font-size: 18px; /* Default font size */
     margin-bottom: 20px; /* Margin to create space below the paragraph */
-    animation: fadeIn 2s ease-in-out; /* Add fade-in animation */
 }
 
 .our-mission .mission-cards {
@@ -1088,7 +1002,6 @@ a {
     justify-content: center; /* Center cards horizontally */
     flex-wrap: wrap;
     gap: 30px; /* Set gap between cards to 30px */
-    animation: fadeIn 2.5s ease-in-out; /* Add fade-in animation */
 }
 
 .our-mission .card {
@@ -1102,7 +1015,6 @@ a {
     text-align: left; /* Align text to the left inside cards */
     position: relative;
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    animation: zoomIn 1s ease-in-out; /* Add zoom-in animation */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effects */
 }
 
@@ -1111,54 +1023,10 @@ a {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance the shadow effect */
 }
 
-@keyframes zoomIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 .our-mission .icon-container {
-    width: 80px; /* Increased icon size */
-    height: 80px; /* Increased icon size */
+    width: 80px; /* Icon size */
+    height: 80px; /* Icon size */
     margin-bottom: 30px; /* Space between icon and text */
-    animation: bounceIn 1.5s ease-in-out; /* Add bounce-in animation */
-}
-
-@keyframes bounceIn {
-    0%,
-    20%,
-    40%,
-    60%,
-    80%,
-    100% {
-        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    0% {
-        opacity: 0;
-        transform: scale3d(0.3, 0.3, 0.3);
-    }
-    20% {
-        transform: scale3d(1.1, 1.1, 1.1);
-    }
-    40% {
-        transform: scale3d(0.9, 0.9, 0.9);
-    }
-    60% {
-        opacity: 1;
-        transform: scale3d(1.03, 1.03, 1.03);
-    }
-    80% {
-        transform: scale3d(0.97, 0.97, 0.97);
-    }
-    100% {
-        opacity: 1;
-        transform: scale3d(1, 1, 1);
-    }
 }
 
 .our-mission .card-content {
@@ -1174,12 +1042,12 @@ a {
 
 .our-mission .card h3 {
     color: #2F327D; /* Set h3 color */
-    font-size: 22px; /* Reduced font size */
+    font-size: 22px; /* Font size */
 }
 
 .our-mission .card p {
     color: #696984; /* Set color for p */
-    font-size: 14px; /* Reduced font size */
+    font-size: 14px; /* Font size */
     text-align: left; /* Ensure paragraphs align to the left */
 }
 
