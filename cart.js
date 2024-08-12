@@ -221,7 +221,7 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
         },
     });
 
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbyomFdck14BZ7w0GlzgUtmQHLOniCp58SXmjsxC8w4252YYzfU8gdsm-t8_XtHPkHPDag/exec"; // Your script URL
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbycUkrH503piPFI_RIyKIlK2UxoP31QLzUJeQdLhMdC9L1gRyCLCd2FMbeGs71e_eVdPQ/exec"; // Your script URL
     const xhr = new XMLHttpRequest();
     
     xhr.open("POST", scriptUrl, true);
