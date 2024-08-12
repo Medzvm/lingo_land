@@ -137,6 +137,15 @@
                         } else {
                             console.error('Error:', data.error);
                             Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong! Please try again later.',
+                            });
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Error!', error);
+                        Swal.fire({
                                 imageUrl: "assets/images/logo.png",
                                 imageAlt: "Custom Success Icon",
                                 title: 'Success!',
@@ -152,15 +161,6 @@
                                 backdrop: "rgba(0,0,0,0.4)",
                             }).then(() => {
                                 window.location.reload();
-                            });
-                        }
-                    },
-                    error: function (error) {
-                        console.error('Error!', error);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'An unexpected error occurred. Please try again later.',
                         });
                     }
                 });
