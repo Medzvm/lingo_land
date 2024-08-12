@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Resources</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo"><img src="img/logo.png" alt="LingoLand Logo"></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="store.html">Store</a></li>
+                    <li><a href="aboout-us.html">About Us</a></li>
+                    <li><a href="our_ressources.html">Resources</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="resources-section">
+            <h1>Our Resources</h1>
+            <div class="form-container">
+                <form action="submit-form.php" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="coming-soon">
+                <h2>Coming Soon</h2>
+                <p>We are working on exciting new resources. Stay tuned!</p>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="LingoLand Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-info">
+                <h2>Contact Us</h2>
+                <p>1234 Rte tunis, Sfax, Tunisia</p>
+                <p>Email: <a href="mailto:contact@lingoland.com">contact@lingoland.com</a></p>
+                <p>Phone: <a href="tel:+21612345678">+216 123 456 78</a></p>
+            </div>
+            <div class="footer-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="store.html">Store</a></li>
+                    <li><a href="aboout-us.html">About Us</a></li>
+                    <li><a href="our_ressources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-social-media">
+                <h2>Follow Us</h2>
+                <a href="" target="_blank" class="social-icon facebook" aria-label="Facebook"><img src="img/facebook.png" alt="" srcset=""></a>
+                <a href="" target="_blank" class="social-icon twitter" aria-label="Twitter"><img src="img/youtube.png" alt=""></a>
+                <a href="" target="_blank" class="social-icon instagram" aria-label="Instagram"><img src="img/innstagram.png" alt="" srcset=""></a>
+                <a href="" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"><img src="img/linkedin.png" alt="" srcset=""></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LingoLand. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
