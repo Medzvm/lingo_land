@@ -66,36 +66,45 @@ document.addEventListener('DOMContentLoaded', function () {
             updateCheckoutModal(); // Update checkout modal if it is open
         }
     }
+// Add to cart functionality
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function () {
+        const productCard = this.closest('.product-card');
+        const productId = productCard.getAttribute('data-product-id');
+        const productName = productCard.querySelector('h2').textContent;
+        const productPrice = productCard.querySelector('.price').textContent;
+        const productImage = productCard.querySelector('img').src;
 
-    // Add to cart functionality
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function () {
-            const productCard = this.closest('.product-card');
-            const productId = productCard.getAttribute('data-product-id');
-            const productName = productCard.querySelector('h2').textContent;
-            const productPrice = productCard.querySelector('.price').textContent;
-            const productImage = productCard.querySelector('img').src;
+        const existingProduct = cart.find(item => item.id === productId);
 
+        if (existingProduct) {
+            // If the product already exists in the cart, increase the quantity
+            existingProduct.quantity += 1;
+        } else {
+            // Otherwise, add a new product with quantity set to 1
             const product = {
                 id: productId,
                 name: productName,
                 price: productPrice,
-                image: productImage
+                image: productImage,
+                quantity: 1
             };
-
             cart.push(product);
-            updateCart();
-            Swal.fire({
-                toast: true,
-                position: "bottom",
-                showConfirmButton: false,
-                timer: 1200,
-                timerProgressBar: true,
-                icon: "success",
-                title: "Item added"
-            });
+        }
+
+        updateCart();
+        Swal.fire({
+            toast: true,
+            position: "bottom",
+            showConfirmButton: false,
+            timer: 1200,
+            timerProgressBar: true,
+            icon: "success",
+            title: "Item added"
         });
     });
+});
+
 
     // Hide cart dropdown when clicking outside
     document.addEventListener('click', function (event) {
@@ -221,7 +230,7 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
         },
     });
 
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbyfJ6a6CNnqdTveJxdpC_xR_3nWSbi4tL7k7SlENhrEBkUTPS1-QB_ZRoUGgmect0jKTw/exec"; // Your script URL
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbwnNp8uJm6pNcjlnt9nLkJA_vpq2vQo_uvnzwFa4L9NIUUcxWPu207bUcEVwEa0Dcf6dw/exec"; // Your script URL
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", scriptUrl, true);
