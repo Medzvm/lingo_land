@@ -24,40 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Update cart
-    function updateCart() {
-        cartCount.textContent = cart.length;
-        cartItemsContainer.innerHTML = ''; // Clear existing items
-        cart.forEach(item => {
-            const cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item');
-            cartItem.setAttribute('data-product-id', item.id);
-            cartItem.innerHTML = `
-                <button class="remove-item-btn" aria-label="Remove item">&times;</button>
-                <div class="cart-item-details">
-                    <h3>${item.name}</h3>
-                    <p class="price">${item.price}</p>
-                </div>
-                <div class="cart-item-quantity">
-                    <input type="number" class="quantity-input" value="1" min="1" max="9">
-                </div>
-            `;
-            cartItemsContainer.appendChild(cartItem);
-        });
-
-        // Re-attach remove functionality
-        attachRemoveListeners();
-    }
-
-    function attachRemoveListeners() {
-        document.querySelectorAll('.remove-item-btn').forEach(button => {
-            button.addEventListener('click', function () {
-                const productId = this.closest('.cart-item').getAttribute('data-product-id');
-                removeCartItem(productId);
-            });
-        });
-    }
-
     function removeCartItem(productId) {
         // Remove item from cart array
         cart = cart.filter(item => item.id !== productId);
@@ -66,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
             updateCheckoutModal(); // Update checkout modal if it is open
         }
     }
+
+// Add to cart functionality
 // Add to cart functionality
 document.querySelectorAll('.add-to-cart').forEach(button => {
     button.addEventListener('click', function () {
@@ -105,6 +73,51 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
     });
 });
 
+// Update cart
+function updateCart() {
+    cartCount.textContent = cart.length;
+    cartItemsContainer.innerHTML = ''; // Clear existing items
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.setAttribute('data-product-id', item.id);
+        cartItem.innerHTML = `
+            <button class="remove-item-btn" aria-label="Remove item">&times;</button>
+            <div class="cart-item-details">
+                <h3>${item.name}</h3>
+                <p class="price">${item.price}</p>
+            </div>
+            <div class="cart-item-quantity">
+                <input type="number" class="quantity-input" value="${item.quantity}" min="1" max="9">
+            </div>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+    });
+
+    // Re-attach remove functionality
+    attachRemoveListeners();
+}
+
+// Re-attach remove listeners function
+function attachRemoveListeners() {
+    document.querySelectorAll('.remove-item-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const productId = this.closest('.cart-item').getAttribute('data-product-id');
+            removeCartItem(productId);
+        });
+    });
+}
+
+// Function to remove cart item
+function removeCartItem(productId) {
+    // Remove item from cart array
+    cart = cart.filter(item => item.id !== productId);
+    updateCart();
+    if (document.querySelector('.swal2-container')) {
+        updateCheckoutModal(); // Update checkout modal if it is open
+    }
+}
+
 
     // Hide cart dropdown when clicking outside
     document.addEventListener('click', function (event) {
@@ -113,25 +126,6 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         }
     });
 
-    // Function to update checkout modal content
-    function updateCheckoutModal() {
-        Swal.getPopup().querySelector('.cart-items').innerHTML = `
-            ${cart.map(item => `
-                <div class="cart-item" data-product-id="${item.id}">
-                    <button class="remove-item-btn" aria-label="Remove item">&times;</button>
-                    <img src="${item.image}" alt="Product Image" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <h3>${item.name}</h3>
-                        <p class="price">${item.price}</p>
-                    </div>
-                    <div class="cart-item-quantity">
-                        <input type="number" class="quantity-input" value="1" min="1">
-                    </div>
-                </div>
-            `).join('')}
-        `;
-        attachRemoveListeners(); // Re-attach remove listeners
-    }
 
     // Checkout function to show the product details form
 
