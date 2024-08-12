@@ -75,7 +75,7 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
 // Update cart
 function updateCart() {
     cartCount.textContent = cart.length;
-    cartItemsContainer.innerHTML = ''; // Clear existing items
+    cartItemsContainer.innerHTML = '';
     cart.forEach(item => {
         const cartItem = document.createElement('div');
         cartItem.classList.add('cart-item');
@@ -116,8 +116,6 @@ function removeCartItem(productId) {
         updateCheckoutModal(); // Update checkout modal if it is open
     }
 }
-
-
     // Hide cart dropdown when clicking outside
     document.addEventListener('click', function (event) {
         if (!cartBtn.contains(event.target) && !cartDropdown.contains(event.target)) {
@@ -125,10 +123,7 @@ function removeCartItem(productId) {
         }
     });
 
-
     // Checkout function to show the product details form
-
-
     function checkout() {
         Swal.fire({
             showConfirmButton: false,
