@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 // Add to cart functionality
-// Add to cart functionality
 document.querySelectorAll('.add-to-cart').forEach(button => {
     button.addEventListener('click', function () {
         const productCard = this.closest('.product-card');
