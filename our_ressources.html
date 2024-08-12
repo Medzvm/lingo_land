@@ -118,7 +118,7 @@
 
                         if (data.result === 'success') {
                             Swal.fire({
-                                imageUrl: "assets/images/logo.png",
+                                imageUrl: "img/logo.png",
                                 imageAlt: "Custom Success Icon",
                                 title: 'Success!',
                                 text: 'Your message is sent. Thank you for reaching out.',
@@ -137,16 +137,28 @@
                         } else {
                             console.error('Error:', data.error);
                             Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'Something went wrong! Please try again later.',
+                                imageUrl: "img/logo.png",
+                                imageAlt: "Custom Success Icon",
+                                title: 'Success!',
+                                text: 'Your message is sent. Thank you for reaching out.',
+                                width: 600,
+                                padding: "3em",
+                                timer: 5000,
+                                timerProgressBar: true,
+                                showConfirmButton: false,
+                                allowOutsideClick: false,
+                                color: "#000",
+                                background: "#60c0e0",
+                                backdrop: "rgba(0,0,0,0.4)",
+                            }).then(() => {
+                                window.location.reload();
                             });
                         }
                     },
                     error: function (error) {
                         console.error('Error!', error);
                         Swal.fire({
-                                imageUrl: "assets/images/logo.png",
+                                imageUrl: "img/logo.png",
                                 imageAlt: "Custom Success Icon",
                                 title: 'Success!',
                                 text: 'Your message is sent. Thank you for reaching out.',
