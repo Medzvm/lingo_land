@@ -240,7 +240,7 @@ function removeCartItem(productId) {
             console.error('Form not found');
         }
     }
-    
+
 
     // Expose checkout function globally
     window.checkout = checkout;
@@ -258,7 +258,7 @@ function sendProductToGoogleSheets(name, email, phone, country, products) {
             Swal.showLoading();
         },
     });
-
+    // Google Sheets API code here
     const scriptUrl = "https://script.google.com/macros/s/AKfycbyVoipt6inAFt07xm9MtNq3F0qfbbwN6czf2xdQ4KLJ08KNKCwL6BEwK1Zkib4oJ2q9/exec"; // Your script URL
     const xhr = new XMLHttpRequest();
 
