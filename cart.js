@@ -160,9 +160,30 @@ function removeCartItem(productId) {
                     <input type="tel" id="phone" name="phone" required>
                     <label for="country">State:</label>
                     <select id="country" name="country" required>
-                        <option value="tn-01" selected>Tunis</option>
-                        <option value="tn-02">Ariana</option>
-                        <!-- More options... -->
+                        <option value="Tunis">Tunis</option>
+                        <option value="Ariana">Ariana</option>
+                        <option value="Ben Arous">Ben Arous</option>
+                        <option value="Manouba">Manouba</option>
+                        <option value="Bizerte">Bizerte</option>
+                        <option value="Nabeul">Nabeul</option>
+                        <option value="Zaghouan">Zaghouan</option>
+                        <option value="Beja">Beja</option>
+                        <option value="Jendouba">Jendouba</option>
+                        <option value="Kef">Kef</option>
+                        <option value="Siliana">Siliana</option>
+                        <option value="Kasserine">Kasserine</option>
+                        <option value="Sidi Bouzid">Sidi Bouzid</option>
+                        <option value="Sousse">Sousse</option>
+                        <option value="Monastir">Monastir</option>
+                        <option value="Mahdia">Mahdia</option>
+                        <option value="Sfax">Sfax</option>
+                        <option value="Gabes">Gabes</option>
+                        <option value="Mednine">Mednine</option>
+                        <option value="Tozeur">Tozeur</option>
+                        <option value="Kebili">Kebili</option>
+                        <option value="Gafsa">Gafsa</option>
+                        <option value="Tataouine">Tataouine</option>
+                        <option value="Kairouan">Kairouan</option>
                     </select>
                     <button type="submit" id="submit-btn">Submit</button>
                 </form>
