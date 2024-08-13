@@ -85,7 +85,7 @@ a {
 
 .header .nav-list a:hover {
     background-color: #e0e0e0;
-    color: #00ACA8;
+    color: #00aca9a6;
     border-radius: 5px;
 }
 
@@ -111,7 +111,7 @@ a {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #00ACA8;
+        background-color: #00aca9a4;
         position: absolute;
         top: 60px;
         left: 0;
@@ -1663,7 +1663,7 @@ a {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #00ACA8;
+        background-color: #00aca9a9;
         position: absolute;
         top: 60px;
         left: 0;
