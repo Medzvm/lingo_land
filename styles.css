@@ -1090,6 +1090,27 @@ a {
     transform: translateX(-50%) scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+.marquee-container {
+    padding: 16px; /* Add padding around the container */
+    margin: 0 auto; /* Center the container horizontally */
+}
+.marquee {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: marquee 20s linear infinite;
+}
+.marquee:hover {
+    animation-play-state: paused;
+}
+.marquee.reverse {
+    animation-direction: reverse;
+}
+@keyframes marquee {
+    from { transform: translateX(50%); }
+    to { transform: translateX(-40%); }
+}
+
 
 /* Responsive Design for Laptops and Desktops */
 @media (min-width: 992px) and (max-width: 1199px) {

@@ -24,18 +24,18 @@
         }
         @keyframes marquee {
             from { transform: translateX(50%); }
-            to { transform: translateX(-60%); }
+            to { transform: translateX(-40%); }
         }
 
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900">
 
-<div class="marquee-container relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
-    <div class="marquee" id="firstMarquee"  style="margin:20px">
+<div class="marquee-container relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background ">
+    <div class="marquee" id="firstMarquee">
         <!-- Review cards will be injected here by JavaScript -->
     </div>
-    <div class="marquee reverse" id="secondMarquee" style="margin-left:20px">
+    <div class="marquee reverse" id="secondMarquee">
         <!-- Review cards will be injected here by JavaScript -->
     </div>
     <div class="gradient-overlay left"></div>
