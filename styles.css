@@ -249,7 +249,7 @@ a {
     align-items: center;
     justify-content: space-between;
     background-color: #00ABA4;
-    padding: 50px;
+    padding: 30px 50px 50px; /* Decrease top padding */
     color: white;
     position: relative;
     overflow: hidden;
@@ -273,6 +273,7 @@ a {
 .hero-content {
     max-width: 500px;
     animation: slideInLeft 1s ease-in-out; /* Slide-in animation from the left */
+    margin-top: -20px; /* Move content up */
 }
 
 .hero-content h1 {
@@ -364,12 +365,12 @@ a {
 }
 
 .badge:first-child {
-    transform: translateX(-20px); /* Move this badge 200px to the left */
+    transform: translateX(-20px); /* Move this badge 20px to the left */
     margin-top: 200px; /* Adjust this value for individual badge spacing */
 }
 
 .class-info {
-    transform: translateX(-20px); /* Move this badge 200px to the left */
+    transform: translateX(-20px); /* Move this badge 20px to the left */
     margin-top: 10px; /* Adjust this value for individual badge spacing */
     flex-direction: row; /* Align items in a row */
     align-items: center; /* Center align items vertically */
@@ -398,6 +399,7 @@ a {
 .join-now-btn:hover {
     background-color: #e6891f; /* Darker shade on hover */
 }
+
 /* Keyframes for float animation */
 @keyframes float {
     0% {
@@ -575,16 +577,16 @@ a {
     100% { transform: translateX(0); opacity: 1; }
 }
 
-@keyframes fadeInUp {
-    0% { transform: translateY(20px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
+
 /* Our Approach Section Styles */
 .our-approach {
     margin-bottom: 40px;
