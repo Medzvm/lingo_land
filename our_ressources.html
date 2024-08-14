@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header">
+       <header class="header">
         <div class="container">
             <a href="#" class="logo" id="logo">
                 <img src="img/logo.png" alt="LingoLand Logo" class="logo">
@@ -20,7 +20,7 @@
                 </span>
             </button>
             <nav class="nav">
-                             <ul class="nav-list">
+                <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="store.html">Store</a></li>
                     <li><a href="aboout-us.html">About Us</a></li>
@@ -30,31 +30,46 @@
             </nav>
         </div>
     </header>
-
-    <main class="main-content">
-        <section class="resources-section">
-            <h1>Our Resources</h1>
-            <div class="form-container">
-                <form action="submit-form.php" method="post">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                    
-                    <button type="submit">Submit</button>
-                </form>
+    <section class="education-videos">
+        <div class="hero-banner">
+            <h1>Explore Educational Videos</h1>
+            <p>Learn and grow with our curated selection of videos for each grade.</p>
+        </div>
+        <div class="container">
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab" data-grade="4">Grade 4</div>
+                    <div class="tab" data-grade="5">Grade 5</div>
+                    <div class="tab" data-grade="6">Grade 6</div>
+                    <div class="tab" data-grade="9">Grade 9</div>
+                </div>
+                <div class="video-grid">
+                    <!-- Grade 4 Videos -->
+                    <div class="video-section" id="grade-4">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/3AH8Obd9fbA?si=IT5IGEA94ZJeoGYz" title="YouTube video player" allowfullscreen></iframe>
+                        </div>
+                        <!-- Add remaining Grade 4 videos here -->
+                    </div>
+        
+                    <!-- Grade 5 Videos -->
+                    <div class="video-section" id="grade-5">
+                        <!-- Add Grade 5 videos here -->
+                    </div>
+        
+                    <!-- Grade 6 Videos -->
+                    <div class="video-section" id="grade-6">
+                        <!-- Add Grade 6 videos here -->
+                    </div>
+        
+                    <!-- Grade 9 Videos -->
+                    <div class="video-section" id="grade-9">
+                        <!-- Add Grade 9 videos here -->
+                    </div>
+                </div>
             </div>
-            <div class="coming-soon">
-                <h2>Coming Soon</h2>
-                <p>We are working on exciting new resources. Stay tuned!</p>
-            </div>
-        </section>
-    </main>
-
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-content">
