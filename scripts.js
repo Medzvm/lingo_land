@@ -30,3 +30,21 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(element);
     });
 });
+
+
+
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        const grade = tab.getAttribute('data-grade');
+        
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        document.querySelectorAll('.video-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        document.getElementById(`grade-${grade}`).classList.add('active');
+    });
+});
+
