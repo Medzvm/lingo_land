@@ -249,7 +249,7 @@ a {
     align-items: center;
     justify-content: space-between;
     background-color: #00ABA4;
-    padding: 30px 50px 50px; /* Decrease top padding */
+    padding: 5px 50px 50px; /* Decrease top padding by 10px */
     color: white;
     position: relative;
     overflow: hidden;
@@ -273,7 +273,7 @@ a {
 .hero-content {
     max-width: 500px;
     animation: slideInLeft 1s ease-in-out; /* Slide-in animation from the left */
-    margin-top: -20px; /* Move content up */
+    margin-top: -30px; /* Move content up by additional 10px */
 }
 
 .hero-content h1 {
@@ -577,14 +577,14 @@ a {
     100% { transform: translateX(0); opacity: 1; }
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
 @keyframes fadeInUp {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 /* Our Approach Section Styles */
