@@ -1,28 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="LingoLand: Innovation meets Education. Discover our innovative English language resources tailored to the Tunisian curriculum." />
-    <meta name="keywords" content="English language, education, Tunisian curriculum, LingoLand, innovative resources" />
-    <meta name="author" content="LingoLand Team" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-    <meta name="theme-color" content="#f0f" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="LingoLand" />
-    <meta property="og:description" content="LingoLand offers top-quality English teaching materials designed to enhance learning experiences." />
-    <meta property="og:image" content="img/logo.png" />
-    <meta property="og:url" content="https://www.lingoland.tn" />
-    
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.lingoland.tn" />
-    <meta property="twitter:title" content="LingoLand" />
-    <meta property="twitter:description" content="LingoLand offers top-quality English teaching materials designed to enhance learning experiences." />
-    <meta property="twitter:image" content="img/logo.png" />
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store - LingoLand</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -30,20 +10,32 @@
         /* Add any additional styles here */
     </style>
 </head>
-<body>
+<body>   
     <header class="header">
         <div class="container">
-            <a href="index.html" class="logo" id="logo">
-                <img src="img/logo.png" alt="LingoLand Logo" class="logo">
+            <a href="#" class="logo" id="logo">
+                <img src="img/logo.png" alt="LingoLand Logo">
             </a>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="store.html">Store</a></li>
-                    <li><a href="aboout-us.html">About Us</a></li>
-                    <li><a href="our_ressources.html">Resources</a></li>
-                </ul>
-            </nav>
+            <div class="nav-container">
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <span class="menu-icon">
+                        <span class="menu-icon-line"></span>
+                        <span class="menu-icon-line"></span>
+                        <span class="menu-icon-line"></span>
+                    </span>
+                </button>
+                                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="store.html">Store</a></li>
+                        <li><a href="aboout-us.html">About Us</a></li>
+                        <li><a href="our_ressources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+</div>
             <div class="cart-container">
                 <button class="cart-btn" aria-label="View Cart">
                     <img src="img/cart.png" alt="Cart Icon">
@@ -57,7 +49,6 @@
                     <a onclick="checkout()" class="view-cart">Check Out</a>
                 </div>
             </div>
-            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
         </div>
     </header>
     
@@ -78,75 +69,74 @@
                 <!-- Product Card 1 -->
                 <div class="product-card" data-product-id="1">
                     <img src="img/14.png" alt="Product Image">
-                    <h2>4th Form</h2>
-                    <p class="price"><img src="img/dinar.png" style="width:10px"> 40</p>
+                    <h2>Product Name 1</h2>
+                    <p class="price">$19.99</p>
                     <button class="btn add-to-cart">Add to Cart</button>
                 </div>
                 <!-- Product Card 2 -->
                 <div class="product-card" data-product-id="2">
                     <img src="img/9.png" alt="Product Image">
-                    <h2>6th Grade</h2>
-                    <p class="price"><img src="img/dinar.png" style="width:10px"> 40</p>
+                    <h2>Product Name 2</h2>
+                    <p class="price">$29.99</p>
                     <button class="btn add-to-cart">Add to Cart</button>
                 </div>
                 <!-- Product Card 3 -->
                 <div class="product-card" data-product-id="3">
                     <img src="img/16.png" alt="Product Image">
-                    <h2>9th Grade</h2>
-                    <p class="price"><img src="img/dinar.png" style="width:10px"> 40</p>
+                    <h2>Product Name 3</h2>
+                    <p class="price">$39.99</p>
                     <button class="btn add-to-cart">Add to Cart</button>
                 </div>
                 <!-- Product Card 4 -->
                 <div class="product-card" data-product-id="4">
                     <img src="img/5.png" alt="Product Image">
-                    <h2>4th Grade</h2>
-                    <p class="price"><img src="img/dinar.png" style="width:10px"> 40</p>
+                    <h2>Product Name 4</h2>
+                    <p class="price">$49.99</p>
                     <button class="btn add-to-cart">Add to Cart</button>
                 </div>
                 <!-- Product Card 5 -->
                 <div class="product-card" data-product-id="5">
                     <img src="img/1.png" alt="Product Image">
-                    <h2>5th Grade</h2>
-                    <p class="price"><img src="img/dinar.png" style="width:10px"> 40</p>
+                    <h2>Product Name 5</h2>
+                    <p class="price">$59.99</p>
                     <button class="btn add-to-cart">Add to Cart</button>
                 </div>
             </div>
         </section>
     </main>
     
-<footer class="footer">
-    <div class="footer-content">
-        <div class="">
-            <a href="#" class="logo" id="logo">
-             <img src="img/logo.png" alt="LingoLand Logo" class="footer-logo-img">
-            </a>
-        </div>
-        <div class="footer-info">
-            <h2>Contact Us</h2>
-            <p>1234 Rte tunis, Sfax, Tunisia</p>
-            <p>Email: <a href="mailto:contact@lingoland.com">contact@lingoland.com</a></p>
-            <p>Phone: <a href="tel:+21612345678">+216 123 456 78</a></p>
-        </div>
-        <div class="footer-links">
-            <h2>Quick Links</h2>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="store.html">Store</a></li>
-                <li><a href="aboout-us.html">About Us</a></li>
-                <li><a href="our_ressources.html">Resources</a></li>
-            </ul>
-        </div>
-        <div class="footer-social-media">
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="LingoLand Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-info">
+                <h2>Contact Us</h2>
+                <p>1234 Rte tunis, Sfax, Tunisia</p>
+                <p>Email: <a href="mailto:contact@lingoland.com">contact@lingoland.com</a></p>
+                <p>Phone: <a href="tel:+21612345678">+216 123 456 78</a></p>
+            </div>
+            <div class="footer-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="store.html">Store</a></li>
+                    <li><a href="aboout-us.html">About Us</a></li>
+                    <li><a href="our_ressources.html">Resources</a></li>
+                </ul>
+            </div>
+                  <div class="footer-social-media">
             <h2>Follow Us</h2>
             <a href="https://www.facebook.com/profile.php?id=100094352086577" target="_blank" class="social-icon facebook" aria-label="Facebook"><img src="img/facebook.png" alt="" srcset=""></a>
             <a href="https://www.youtube.com/@LingoLandCoursebooks" target="_blank" class="social-icon twitter" aria-label="Twitter"><img src="img/youtube.png" alt=""></a>
             <a href="https://www.instagram.com/lingoland_coursebooks/" target="_blank" class="social-icon instagram" aria-label="Instagram"><img src="img/innstagram.png" alt="" srcset=""></a>
+        
         </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 LingoLand. All rights reserved.</p>
-    </div>
-</footer>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LingoLand. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="scripts.js"></script>
     <script src="cart.js"></script>
