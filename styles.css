@@ -291,7 +291,7 @@ a {
 }
 
 .join-btn {
-    background-color: #F8A233;
+    background-color: #F5A93B;
     border: none;
     border-radius: 80px;
     padding: 15px 30px;
@@ -384,7 +384,7 @@ a {
 }
 
 .join-now-btn {
-    background-color: #F8A233;
+    background-color: #F5A93B;
     border: none;
     border-radius: 80px;
     padding: 8px 16px; /* Reduced padding */
@@ -855,8 +855,8 @@ a {
 /* Specific Button Styles */
 .for-instructors .btn {
     background-color: transparent;
-    color: #F8A233;
-    border: 2px solid #F8A233;
+    color: #F5A93B;
+    border: 2px solid #F5A93B;
 }
 
 .for-students .btn {
