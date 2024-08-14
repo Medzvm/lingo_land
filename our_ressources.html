@@ -1,36 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="LingoLand: Innovation meets Education. Discover our innovative English language resources tailored to the Tunisian curriculum." />
-    <meta name="keywords" content="English language, education, Tunisian curriculum, LingoLand, innovative resources" />
-    <meta name="author" content="LingoLand Team" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-    <meta name="theme-color" content="#3e8f0f" />
-    
-    <title>LingoLand</title>
-    
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="LingoLand" />
-    <meta property="og:description" content="LingoLand offers top-quality English teaching materials designed to enhance learning experiences." />
-    <meta property="og:image" content="img/logo.png" />
-    <meta property="og:url" content="https://www.lingoland.tn" />
-    
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.lingoland.tn" />
-    <meta property="twitter:title" content="LingoLand" />
-    <meta property="twitter:description" content="LingoLand offers top-quality English teaching materials designed to enhance learning experiences." />
-    <meta property="twitter:image" content="img/logo.png" />
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Resources</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <a href="index.html" class="logo"><img src="img/logo.png" alt="LingoLand Logo"></a>
+            <a href="#" class="logo" id="logo">
+                <img src="img/logo.png" alt="LingoLand Logo" class="logo">
+            </a>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span class="menu-icon">
+                    <span class="menu-icon-line"></span>
+                    <span class="menu-icon-line"></span>
+                    <span class="menu-icon-line"></span>
+                </span>
+            </button>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html">Home</a></li>
@@ -39,7 +27,6 @@
                     <li><a href="our_ressources.html">Resources</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
         </div>
     </header>
 
@@ -47,7 +34,7 @@
         <section class="resources-section">
             <h1>Our Resources</h1>
             <div class="form-container">
-                <form id="contact-form" class="app-form">
+                <form action="submit-form.php" method="post">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
                     
@@ -59,7 +46,6 @@
                     
                     <button type="submit">Submit</button>
                 </form>
-                
             </div>
             <div class="coming-soon">
                 <h2>Coming Soon</h2>
@@ -68,138 +54,39 @@
         </section>
     </main>
 
-<footer class="footer">
-    <div class="footer-content">
-        <div class="">
-            <a href="#" class="logo" id="logo">
-             <img src="img/logo.png" alt="LingoLand Logo" class="footer-logo-img">
-            </a>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="LingoLand Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-info">
+                <h2>Contact Us</h2>
+                <p>1234 Rte tunis, Sfax, Tunisia</p>
+                <p>Email: <a href="mailto:contact@lingoland.com">contact@lingoland.com</a></p>
+                <p>Phone: <a href="tel:+21612345678">+216 123 456 78</a></p>
+            </div>
+            <div class="footer-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="store.html">Store</a></li>
+                    <li><a href="aboout-us.html">About Us</a></li>
+                    <li><a href="our_ressources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-social-media">
+                <h2>Follow Us</h2>
+                <a href="" target="_blank" class="social-icon facebook" aria-label="Facebook"><img src="img/facebook.png" alt="" srcset=""></a>
+                <a href="" target="_blank" class="social-icon twitter" aria-label="Twitter"><img src="img/youtube.png" alt=""></a>
+                <a href="" target="_blank" class="social-icon instagram" aria-label="Instagram"><img src="img/innstagram.png" alt="" srcset=""></a>
+                <a href="" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"><img src="img/linkedin.png" alt="" srcset=""></a>
+            </div>
         </div>
-        <div class="footer-info">
-            <h2>Contact Us</h2>
-            <p>1234 Rte tunis, Sfax, Tunisia</p>
-            <p>Email: <a href="mailto:contact@lingoland.com">contact@lingoland.com</a></p>
-            <p>Phone: <a href="tel:+21612345678">+216 123 456 78</a></p>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LingoLand. All rights reserved.</p>
         </div>
-        <div class="footer-links">
-            <h2>Quick Links</h2>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="store.html">Store</a></li>
-                <li><a href="aboout-us.html">About Us</a></li>
-                <li><a href="our_ressources.html">Resources</a></li>
-            </ul>
-        </div>
-        <div class="footer-social-media">
-            <h2>Follow Us</h2>
-            <a href="https://www.facebook.com/profile.php?id=100094352086577" target="_blank" class="social-icon facebook" aria-label="Facebook"><img src="img/facebook.png" alt="" srcset=""></a>
-            <a href="https://www.youtube.com/@LingoLandCoursebooks" target="_blank" class="social-icon twitter" aria-label="Twitter"><img src="img/youtube.png" alt=""></a>
-            <a href="https://www.instagram.com/lingoland_coursebooks/" target="_blank" class="social-icon instagram" aria-label="Instagram"><img src="img/innstagram.png" alt="" srcset=""></a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 LingoLand. All rights reserved.</p>
-    </div>
-</footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.querySelector('.menu-toggle').addEventListener('click', () => {
-            document.querySelector('.nav').classList.toggle('show');
-        });
-
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwrB3Khh2EX4HNRwUufpcYwJ7ENiRYRPCHGg_5ae3MMmPg_gwM5Wnnde5EmY1zOsqQ1/exec';
-
-        $(document).ready(function () {
-            $('#contact-form').on('submit', function (e) {
-                e.preventDefault();
-
-                Swal.fire({
-                    icon: 'info',
-                    title: 'Please wait...',
-                    text: 'Sending your message',
-                    willOpen: () => {
-                        Swal.showLoading();
-                    },
-                    showConfirmButton: false,
-                    allowOutsideClick: false,
-                    background: "hsla(231, 10%, 14%, 1)"
-                });
-
-                const formData = new FormData(this);
-
-                $.ajax({
-                    url: scriptURL,
-                    method: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                        console.log("Response from Google Sheets:", data);
-
-                        if (data.result === 'success') {
-                            Swal.fire({
-                                imageUrl: "img/logo.png",
-                                imageAlt: "Custom Success Icon",
-                                title: 'Success!',
-                                text: 'Your message is sent. Thank you for reaching out.',
-                                width: 600,
-                                padding: "3em",
-                                timer: 5000,
-                                timerProgressBar: true,
-                                showConfirmButton: false,
-                                allowOutsideClick: false,
-                                color: "#000",
-                                background: "#60c0e0",
-                                backdrop: "rgba(0,0,0,0.4)",
-                            }).then(() => {
-                                window.location.reload();
-                            });
-                        } else {
-                            console.error('Error:', data.error);
-                            Swal.fire({
-                                imageUrl: "img/logo.png",
-                                imageAlt: "Custom Success Icon",
-                                title: 'Success!',
-                                text: 'Your message is sent. Thank you for reaching out.',
-                                width: 600,
-                                padding: "3em",
-                                timer: 5000,
-                                timerProgressBar: true,
-                                showConfirmButton: false,
-                                allowOutsideClick: false,
-                                color: "#000",
-                                background: "#60c0e0",
-                                backdrop: "rgba(0,0,0,0.4)",
-                            }).then(() => {
-                                window.location.reload();
-                            });
-                        }
-                    },
-                    error: function (error) {
-                        console.error('Error!', error);
-                        Swal.fire({
-                                imageUrl: "img/logo.png",
-                                imageAlt: "Custom Success Icon",
-                                title: 'Success!',
-                                text: 'Your message is sent. Thank you for reaching out.',
-                                width: 600,
-                                padding: "3em",
-                                timer: 5000,
-                                timerProgressBar: true,
-                                showConfirmButton: false,
-                                allowOutsideClick: false,
-                                color: "#000",
-                                background: "#60c0e0",
-                                backdrop: "rgba(0,0,0,0.4)",
-                            }).then(() => {
-                                window.location.reload();
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    </footer>
+    <script src="scripts.js"></script>
 </body>
 </html>
