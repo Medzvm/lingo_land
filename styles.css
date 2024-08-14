@@ -63,6 +63,8 @@ a {
 .header .nav {
     display: flex;
     align-items: center;
+    transform: translateX(-100%); /* Initially off-screen */
+    transition: transform 0.3s ease; /* Smooth slide effect */
 }
 
 .header .nav-list {
@@ -85,7 +87,7 @@ a {
 
 .header .nav-list a:hover {
     background-color: #e0e0e0;
-    color: #00aca9a6;
+    color: #00ACA8;
     border-radius: 5px;
 }
 
@@ -96,6 +98,36 @@ a {
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
+    position: relative;
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+}
+
+/* Menu icon lines */
+.menu-icon span {
+    display: block;
+    width: 25px; /* Adjust width as needed */
+    height: 3px; /* Adjust height as needed */
+    background-color: white;
+    margin: 4px 0; /* Space between lines */
+    transition: all 0.3s ease;
+}
+
+/* X icon transformation */
+.menu-toggle.show .menu-icon span:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px; /* Adjust to position in the center */
+}
+
+.menu-toggle.show .menu-icon span:nth-child(2) {
+    opacity: 0; /* Hide the middle line */
+}
+
+.menu-toggle.show .menu-icon span:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    bottom: 8px; /* Adjust to position in the center */
 }
 
 /* Responsive Design */
@@ -106,16 +138,42 @@ a {
     }
 }
 
+/* Tablet and iPad Responsive */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .header .nav {
+        display: flex; /* Display the nav as flex to allow sliding effect */
+        flex-direction: row; /* Keep horizontal layout on tablets */
+        width: auto;
+        position: static; /* Position the nav statically in tablet view */
+        transform: none; /* Remove off-screen positioning */
+        transition: none; /* No transition needed */
+    }
+
+    .header .nav-list {
+        flex-direction: row;
+    }
+
+    .header .nav-list li {
+        margin: 0 15px;
+    }
+
+    .header .menu-toggle {
+        display: none; /* Hide menu toggle on tablets */
+    }
+}
+
 @media (max-width: 768px) {
     .header .nav {
-        display: none;
+        display: flex; /* Display the nav as flex to allow sliding effect */
         flex-direction: column;
         width: 100%;
-        background-color: #00aca9a4;
+        background-color: #00ACA8;
         position: absolute;
         top: 60px;
         left: 0;
         z-index: 10;
+        transform: translateX(-100%); /* Initially off-screen */
+        transition: transform 0.3s ease; /* Smooth slide effect */
     }
 
     .header .nav-list {
@@ -132,7 +190,7 @@ a {
     }
 
     .header .nav.show {
-        display: flex;
+        transform: translateX(0); /* Slide in effect */
     }
 }
 
@@ -144,73 +202,6 @@ a {
     .header .nav-list a {
         font-size: 0.75rem;
         padding: 8px;
-    }
-
-    .hero-content h1 {
-        font-size: 1.5rem;
-        padding: 10px;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-    }
-
-    .cta-buttons button {
-        margin-bottom: 10px;
-    }
-
-    .info-badges {
-        flex-direction: column;
-    }
-
-    .badge, .class-info {
-        width: 100%;
-        text-align: center;
-    }
-
-    .what-is-lingo-land .for-who {
-        flex-direction: column;
-    }
-
-    .for-instructors, .for-students {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .our-approach .approach-cards {
-        flex-direction: column;
-    }
-
-    .approach-cards .card {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .our-mission .mission-cards {
-        flex-direction: column;
-    }
-
-    .mission-cards .card {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .why-choose-us .content {
-        flex-direction: column;
-    }
-
-    .why-choose-us .text-container, .why-choose-us .image-container {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .transform-your-english .transform-content {
-        flex-direction: column;
-    }
-
-    .transform-content .image-container, .transform-content .text {
-        width: 100%;
-        margin-bottom: 20px;
     }
 }
 
@@ -300,7 +291,7 @@ a {
 }
 
 .join-btn {
-    background-color: #F5A93B;
+    background-color: #F8A233;
     border: none;
     border-radius: 80px;
     padding: 15px 30px;
@@ -393,7 +384,7 @@ a {
 }
 
 .join-now-btn {
-    background-color: #F5A93B;
+    background-color: #F8A233;
     border: none;
     border-radius: 80px;
     padding: 8px 16px; /* Reduced padding */
@@ -864,8 +855,8 @@ a {
 /* Specific Button Styles */
 .for-instructors .btn {
     background-color: transparent;
-    color: #F5A93B;
-    border: 2px solid #F5A93B;
+    color: #F8A233;
+    border: 2px solid #F8A233;
 }
 
 .for-students .btn {
@@ -1602,91 +1593,6 @@ a {
 
 
 
-
-.header {
-    background-color: #00ACA8;
-    padding: 10px 20px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
-}
-
-.header .logo img {
-    height: 60px;
-    width: auto;
-}
-
-.header .nav {
-    display: flex;
-    align-items: center;
-}
-
-.header .nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.header .nav-list li {
-    margin: 0 15px;
-}
-
-.header .nav-list a {
-    color: white;
-    font-size: 1rem;
-    padding: 10px;
-    text-decoration: none;
-}
-
-.header .nav-list a:hover {
-    background-color: #e0e0e0;
-    color: #000000;
-    border-radius: 5px;
-}
-
-.header .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header .nav {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #00aca9a9;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        z-index: 10;
-    }
-
-    .header .nav-list {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .header .nav-list li {
-        margin: 10px 0;
-    }
-
-    .header .menu-toggle {
-        display: block;
-    }
-
-    .header .nav.show {
-        display: flex;
-    }
-}
 
 .main-content {
     padding: 20px;
