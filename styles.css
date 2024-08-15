@@ -1635,7 +1635,7 @@ a {
     }
 
     .footer-logo-img {
-        max-width: 100px; /* Smaller logo on small screens */
+        max-width: 120px; /* Smaller logo on small screens */
     }
 
     .footer-social-media a {
