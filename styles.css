@@ -38,6 +38,7 @@ a {
 
 /* Header Styles */
 /* General Header Styling */
+/* General Header Styling */
 .header {
     background-color: #00ACA8;
     padding: 15px 20px;
@@ -46,6 +47,7 @@ a {
     align-items: center;
     justify-content: space-between;
     position: relative;
+    overflow: hidden; /* Prevent horizontal overflow */
 }
 
 /* Container within header */
@@ -55,6 +57,7 @@ a {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative; /* Ensure positioning within container */
 }
 
 /* Logo Styling */
@@ -76,7 +79,7 @@ a {
 }
 
 /* Menu Icon Lines */
-.menu-icon span {
+.menu-icon-line {
     display: block;
     width: 30px;
     height: 3px;
@@ -86,17 +89,17 @@ a {
 }
 
 /* X Icon Transformation */
-.menu-toggle.show .menu-icon span:nth-child(1) {
+.menu-toggle.show .menu-icon-line:nth-child(1) {
     transform: rotate(45deg);
     position: relative;
     top: 8px;
 }
 
-.menu-toggle.show .menu-icon span:nth-child(2) {
+.menu-toggle.show .menu-icon-line:nth-child(2) {
     opacity: 0;
 }
 
-.menu-toggle.show .menu-icon span:nth-child(3) {
+.menu-toggle.show .menu-icon-line:nth-child(3) {
     transform: rotate(-45deg);
     position: relative;
     bottom: 8px;
@@ -111,16 +114,22 @@ a {
 
 /* Navigation Styling */
 .header .nav {
-    display: flex; /* Ensure the nav is displayed */
-    flex-direction: column;
-    width: 100%;
-    background-color: #00ACA8;
-    position: absolute;
-    top: 70px;
+    position: fixed; /* Fix navigation in place */
+    top: 70px; /* Adjust based on header height */
     right: 0;
-    z-index: 1;
-    transform: translateX(100vw); /* Fully off-screen */
-    transition: transform 0.3s ease;
+    width: 100vw; /* Full viewport width */
+    height: calc(100vh - 70px); /* Full viewport height minus header height */
+    background-color: #00ACA8; /* Match header background */
+    overflow-y: auto; /* Allow vertical scrolling if needed */
+    transform: translateX(100vw); /* Off-screen initially */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+    opacity: 0; /* Initially hidden */
+}
+
+/* Show Navigation */
+.header .nav.show {
+    transform: translateX(0); /* Move nav into view */
+    opacity: 1; /* Show nav */
 }
 
 /* Nav List Styling */
@@ -150,11 +159,6 @@ a {
     color: #ff7428; /* Orange */
 }
 
-/* Show Navigation */
-.header .nav.show {
-    transform: translateX(0); /* Fully visible when open */
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .header .menu-toggle {
@@ -162,12 +166,11 @@ a {
     }
 
     .header .nav {
-        display: none; /* Initially hidden */
+        display: flex; /* Show navigation menu on mobile */
     }
 
     .header .nav.show {
         display: flex; /* Display the nav as flex when toggled */
-        transform: translateX(0); /* Moves nav into view */
     }
 
     .header .nav-list {
@@ -187,6 +190,7 @@ a {
         flex-direction: row; /* Horizontal layout */
         position: static; /* Static positioning */
         transform: none; /* No transform needed */
+        opacity: 1; /* Ensure opacity is fully visible */
     }
 
     .header .nav-list {
