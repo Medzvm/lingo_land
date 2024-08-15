@@ -53,8 +53,8 @@ a {
 
 /* Logo Styling */
 .header .logo img {
-    height: 50px;
-    width: auto;
+    width: 200px;
+    height: auto;
 }
 
 /* Menu Toggle Button */
@@ -1548,7 +1548,7 @@ a {
 }
 
 .footer-logo-img {
-    max-width: 120px; /* Adjust logo size */
+    max-width: 50%; /* Adjust logo size */
     height: auto;
     margin-bottom: 10px; /* Space below the logo */
 }
