@@ -255,7 +255,7 @@ a {
     align-items: center;
     justify-content: space-between;
     background-color: #00ABA4;
-    padding: 5px 50px 50px; /* Decrease top padding by 10px */
+    padding: 5px 50px 30px; /* Reduced bottom padding by 20px more */
     color: white;
     position: relative;
     overflow: hidden;
@@ -279,13 +279,12 @@ a {
 .hero-content {
     max-width: 500px;
     animation: slideInLeft 1s ease-in-out; /* Slide-in animation from the left */
-    margin-top: -30px; /* Move content up by additional 10px */
+    margin-top: -60px; /* Move content up by an additional 20px */
 }
 
 .hero-content h1 {
     font-size: 48px;
     line-height: 1.2;
-    font-family: 'Anton' , sans-serif;
 }
 
 .hero-content span {
@@ -575,13 +574,13 @@ a {
 }
 
 @keyframes slideInLeft {
-    0% { transform: translateX(-100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
 }
 
 @keyframes slideInRight {
-    0% { transform: translateX(100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0); }
 }
 
 @keyframes fadeInUp {
@@ -590,10 +589,16 @@ a {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
-
 /* Our Approach Section Styles */
 .our-approach {
     margin-bottom: 40px;
