@@ -1111,6 +1111,33 @@ a {
     from { transform: translateX(50%); }
     to { transform: translateX(-40%); }
 }
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20%; /* Adjust the width for the gradient effect */
+    pointer-events: none;
+    background: linear-gradient(to right, #f9f9f9, rgba(255, 255, 255, 0)); /* Fade from white to transparent */
+    z-index: 1; /* Ensure it stays above the marquee content */
+}
+
+.gradient-overlay.right {
+    right: 0;
+    background: linear-gradient(to left, #f9f9f9, rgba(255, 255, 255, 0)); /* Fade from white to transparent on the right side */
+}
+
+.gradient-overlay.left {
+    left: 0;
+    background: linear-gradient(to right, #f9f9f9, rgba(255, 255, 255, 0)); /* Fade from white to transparent on the left side */
+}
+
+/* Make the gradient overlay hidden on small screens */
+@media (max-width: 640px) {
+    .gradient-overlay {
+        display: none;
+    }
+}
+
 
 
 /* Responsive Design for Laptops and Desktops */
