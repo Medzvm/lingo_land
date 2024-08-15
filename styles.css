@@ -1097,12 +1097,15 @@ a {
 }
 .marquee {
     display: flex;
-    white-space: nowrap;
-    overflow: hidden;
     animation: marquee 20s linear infinite;
 }
 .marquee:hover {
     animation-play-state: paused;
+    transform:scale(1.0.5);
+}
+
+.reviewCard:hover{
+    transform: scale(1.1);
 }
 .marquee.reverse {
     animation-direction: reverse;
