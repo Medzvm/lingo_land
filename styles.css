@@ -1,5 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+.anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
 *,
 *::before,
 *::after {
@@ -11,7 +16,7 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Anton', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -53,7 +58,7 @@ a {
 
 /* Logo Styling */
 .header .logo img {
-    width: 200px;
+    width: 170px;
     height: auto;
 }
 
@@ -1635,6 +1640,9 @@ a {
     }
 
     .footer-logo-img {
+        max-width: 120px; /* Smaller logo on small screens */
+    }
+    .logo {
         max-width: 120px; /* Smaller logo on small screens */
     }
 
